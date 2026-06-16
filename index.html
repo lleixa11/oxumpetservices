@@ -12,9 +12,9 @@
     <meta property="og:description" content="Premium mobile pet grooming delivered to your door. Serving Miami & Broward.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://oxumpetservices.com/">
-    <meta property="og:image" content="https://oxumpetservices.com/assets/images/Logo%20Oxum%20_1.png">
-    <link rel="icon" type="image/png" href="assets/images/Logo Oxum _1.png">
-    <link rel="apple-touch-icon" href="assets/images/Logo Oxum _1.png">
+    <meta property="og:image" content="https://oxumpetservices.com/assets/images/Logo%20Oxum_1.png">
+    <link rel="icon" type="image/png" href="assets/images/Logo Oxum_1.png">
+    <link rel="apple-touch-icon" href="assets/images/Logo Oxum_1.png">
 
     <!-- Fonts: Cormorant Garamond + Montserrat (no Codec Cold — unavailable on Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1645,6 +1645,8 @@
             font-size: 0.78rem;
         }
 
+        
+
         /* ============================================================
            WHATSAPP FLOAT
         ============================================================ */
@@ -1706,8 +1708,9 @@
             .services-grid { grid-template-columns: 1fr; }
             .concept-perks { grid-template-columns: 1fr; }
             .reassurance-wrapper { flex-direction: column; align-items: flex-start; padding: 0 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
             .footer-bottom { flex-direction: column; text-align: center; }
+           
         }
     </style>
 </head>
@@ -1993,10 +1996,12 @@
         <div class="container van-details-grid">
             
 <div class="concept-frame reveal">
-    <div class="van-image-wrapper">
-        <!-- Reemplaza la ruta 'assets/images/miami/tu-imagen.jpg' por la imagen real que vas a usar -->
-        <img src="assets/images/miami/van.JPG" alt="Oxum mobile spa van interior" class="van-image-element">
-        <div class="van-image-overlay"></div>
+    <div class="van-video-wrapper">
+        <video class="van-video-element" autoplay muted loop playsinline>
+            <source src="assets/images/miami/van.mp4" type="video/mp4">
+            Your browser doesn't support videos HTML5.
+        </video>
+        <div class="van-video-overlay"></div>
     </div>
 </div>
 
@@ -2088,7 +2093,7 @@
         
         <div class="territories-header reveal">
             <h2>Exclusive <span>Areas</span></h2>
-            <p>Delivering uncompromising canine aesthetics straight to your coordinate.</p>
+            <p>Bringing expert dog grooming and personalized care straight to your home in Florida.</p>
         </div>
 
         <div class="territories-grid">
@@ -2099,7 +2104,7 @@
                 <div class="territory-content">
                     <span class="territory-tag">Oxum Pet Services</span>
                     <!-- Se eliminó la palabra Miami y se reemplazó por South Florida -->
-                    <h3>South Florida & <br><span class="serif-italic">Asheville</span></h3>
+                    <h3>Miami & <br><span class="serif-italic">Broward County</span></h3>
                     <p>Serving the coastal elite. From vibrant avenues to private coastal estates, our specialized units deliver pristine grooming with tropical precision.</p>
                     
                     <!-- Se agregaron los dos contactos con flexbox para que se acomoden bien -->
@@ -2107,9 +2112,7 @@
                         <a href="https://wa.me/13054900892?text=Hello%2C%20Oxum%2C%20I%20would%20love%20to%20book%20a%20premium%20mobile%20grooming%20session%20for%20my%20pet%20(indicate%20your%20city).%20Could%20you%20let%20me%20know%20the%20prices%20and%20availability" class="territory-status" target="_blank" rel="noopener">
                             <i class="fa-brands fa-whatsapp"></i> (305) 490-0892
                         </a>
-                        <a href="https://wa.me/17865607941?text=Hello%2C%20Oxum%2C%20I%20would%20love%20to%20book%20a%20premium%20mobile%20grooming%20session%20for%20my%20pet%20(indicate%20your%20city).%20Could%20you%20let%20me%20know%20the%20prices%20and%20availability" class="territory-status" target="_blank" rel="noopener">
-                            <i class="fa-brands fa-whatsapp"></i> (786) 560-7941
-                        </a>
+
                     </div>
                 </div>
             </div>
