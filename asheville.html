@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior:smooth;overflow-x:hidden;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxum Pet Service | Elite Mobile Pet Spa</title>
+    <meta name="description" content="Oxum Pet Service — Premium mobile dog grooming at your door. Serving Asheville, North Carolina.">
+    <meta property="og:title" content="Oxum Pet Service | Elite Mobile Pet Spa">
+    <meta property="og:description" content="Premium mobile pet grooming delivered to your door. Serving Asheville, North Carolina.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="assets/images/Logo Oxum _1.png">
+    <link rel="apple-touch-icon" href="assets/images/Logo Oxum _1.png">
+
+    <!-- Fonts: Cormorant Garamond + Montserrat (no Codec Cold — unavailable on Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           RESET & ROOT
+        ============================================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-black:      #000000;
+            --bronze:        #916228;
+            --gold:          #E0BC52;
+            --wine:          #68000A;
+            --silver:        #D6D7DB;
+            --white:         #FFFFFF;
+
+            --gold-gradient: linear-gradient(135deg, #916228 0%, #E0BC52 50%, #B8933A 100%);
+            --luxury-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 1px 3px rgba(224,188,82,0.1);
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'Montserrat', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-black); }
+        ::-webkit-scrollbar-thumb { background: var(--bronze); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Headings — Montserrat bold */
+        h1, h2, h3, h4 {
+            font-family: var(--font-body);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* Serif italic accent */
+        .serif-italic {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* ============================================================
+           SCROLL REVEAL
+        ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s cubic-bezier(0.215, 0.610, 0.355, 1),
+                        transform 0.9s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           HEADER / NAV — GRAND LUXURY UPDATE
+        ============================================================ */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(0,0,0,0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.4s ease;
+        }
+        header.scrolled {
+            background: rgba(0,0,0,0.96);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0; /* Más grande e imponente por defecto */
+            transition: padding 0.4s ease;
+        }
+        header.scrolled .navbar { 
+            padding: 14px 0; /* Reducción fluida y elegante al hacer scroll */
+        }
+
+        .brand-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            z-index: 1001;
+        }
+        .nav-logo-img {
+            max-height: 68px; /* Incrementado de 52px para mayor presencia de marca */
+            width: auto;
+            display: block;
+            transition: max-height 0.4s ease;
+        }
+        header.scrolled .nav-logo-img {
+            max-height: 52px; 
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 36px; /* Más espacio entre enlaces */
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--silver);
+            font-size: 0.82rem; /* Legibilidad premium */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        /* Línea dorada sutil al pasar el cursor */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0; width: 100%; height: 1px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--gold); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1001;
+        }
+
+        /* City Switcher */
+        .city-switcher {
+            position: relative;
+            list-style: none;
+        }
+
+        .city-switcher-toggle {
+            background: rgba(145,98,40,0.12);
+            border: 1px solid rgba(224,188,82,0.25);
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            font-family: var(--font-body);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .city-switcher-toggle:hover,
+        .city-switcher.open .city-switcher-toggle {
+            background: rgba(145,98,40,0.2);
+            border-color: var(--gold);
+        }
+
+        .city-chevron {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+        .city-switcher.open .city-chevron {
+            transform: rotate(180deg);
+        }
+
+        .city-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: #0e0e0e;
+            border: 1px solid rgba(224,188,82,0.2);
+            list-style: none;
+            min-width: 200px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            z-index: 1100;
+        }
+        .city-switcher.open .city-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .city-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: var(--silver);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .city-option:last-child { border-bottom: none; }
+        .city-option i { color: var(--bronze); font-size: 0.75rem; }
+        .city-option:hover {
+            color: var(--gold);
+            background: rgba(224,188,82,0.05);
+        }
+        .city-option:hover i { color: var(--gold); }
+        .city-option.city-active { color: var(--gold); }
+        .city-option.city-active i { color: var(--gold); }
+
+        .nav-cta {
+            background: var(--gold-gradient);
+            color: var(--bg-black);
+            padding: 12px 28px;
+            border-radius: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(224,188,82,0.18);
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(224,188,82,0.36);
+        }
+
+        /* Botón hamburguesa */
+        .menu-toggle {
+            display: none; /* Oculto en Desktop */
+            font-size: 1.5rem;
+            color: var(--gold);
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 130px;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 78% 22%, #17120a 0%, var(--bg-black) 60%);
+            overflow: hidden;
+        }
+
+        /* Subtle paw pattern overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M10 20c2.5 0 4.5-2 4.5-4.5S12.5 11 10 11s-4.5 2-4.5 4.5 2 4.5 4.5 4.5zm12 0c2.5 0 4.5-2 4.5-4.5S24.5 11 22 11s-4.5 2-4.5 4.5 2 4.5 4.5 4.5z' fill='%23916228' fill-opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.5s ease;
+        }
+        .hero-tagline::after {
+            content: '';
+            width: 38px;
+            height: 1px;
+            background: var(--gold);
+            display: inline-block;
+            opacity: 0.6;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4.8rem);
+            line-height: 1.07;
+            margin-bottom: 24px;
+        }
+        .hero-title span {
+            display: block;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            color: var(--silver);
+            font-size: 1.05rem;
+            margin-bottom: 42px;
+            max-width: 560px;
+            line-height: 1.75;
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        /* Primary CTA button */
+        .btn-luxury-main {
+            background: var(--gold-gradient);
+            color: var(--bg-black);
+            padding: 17px 38px;
+            border-radius: 0;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 28px rgba(145,98,40,0.28);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-luxury-main::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -80%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transform: skewX(-20deg);
+            animation: shimmer 3.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -80%; }
+            55%, 100% { left: 160%; }
+        }
+        .btn-luxury-main:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(224,188,82,0.4);
+        }
+
+        /* Secondary CTA button */
+        .btn-luxury-secondary {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(214,215,219,0.2);
+            color: var(--white);
+            padding: 17px 34px;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        .btn-luxury-secondary:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+
+        /* ==========================================
+   HERO VAN PARALLAX POSITIONING
+   ========================================== */
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: visible; /* Permite que la van se desplace elegantemente */
+    padding-left: 40px;
+}
+
+.hero-van-img {
+    width: 110%; /* Un poco más grande para dar impacto visual editorial */
+    max-width: 750px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.7)); /* Sombra suave exclusiva para el PNG */
+    will-change: transform; /* Optimiza el rendimiento del navegador para la animación */
+    transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1); /* Suaviza el freno al dejar de scrollear */
+    z-index: 2;
+}
+
+/* Ajuste para pantallas medianas y móviles */
+@media (max-width: 968px) {
+    .hero-image-container {
+        justify-content: center;
+        padding-left: 0;
+        margin-top: 40px;
+    }
+    .hero-van-img {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .prestige-circle {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            border: 1px dashed rgba(224,188,82,0.12);
+            border-radius: 50%;
+            animation: rotateCircle 60s linear infinite;
+        }
+        @keyframes rotateCircle {
+            100% { transform: rotate(360deg); }
+        }
+        .premium-van-silhouette {
+            width: 100%;
+            max-width: 460px;
+            height: auto;
+            filter: drop-shadow(0 24px 40px rgba(145,98,40,0.14));
+            position: relative;
+            z-index: 2;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        /* ============================================================
+   HERO PREMIUM FLUID DIVISION (Grooming / Bath Theme)
+   ============================================================ */
+.hero {
+    /* Incrementamos el padding inferior para darle aire a la onda */
+    padding-bottom: 160px !important; 
+}
+
+.hero-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg); /* Voltea el SVG para que corte hacia abajo */
+    z-index: 3;
+}
+
+.hero-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 110px; /* Controla qué tan pronunciada es la curva */
+}
+
+/* Capa principal: se une de forma nativa con el fondo negro de la siguiente sección */
+.hero-divider .shape-fill {
+    fill: #000000; 
+}
+
+/* Capa de acento: una sutil silueta dorada traslúcida que evoca elegancia y fluidez */
+.hero-divider .shape-accent {
+    fill: rgba(224, 188, 82, 0.12); 
+}
+
+/* Ajuste en la sección siguiente para evitar líneas rígidas */
+.concept {
+    border-top: none !important; /* Eliminamos la línea recta dorada de 1px */
+    padding-top: 80px; /* Ajustamos espacio tras la onda */
+}
+
+/* ============================================================
+   ABOUT US SECTION - EDITORIAL GRID
+   ============================================================ */
+.about-section {
+    padding: 120px 0;
+    background-color: #000000;
+    color: #ffffff;
+    position: relative;
+}
+
+.about-editorial-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr; /* Desfase sutil para estilo editorial */
+    gap: 70px;
+    align-items: flex-start;
+}
+
+/* --- Columna Izquierda: Imagen y Leyenda --- */
+.about-media-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(224, 188, 82, 0.15); /* Marco dorado muy sutil */
+    background-color: #111;
+}
+
+.about-featured-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%); /* Toque cinematográfico */
+    transition: transform 0.5s ease;
+}
+
+.about-image-wrapper:hover .about-featured-img {
+    transform: scale(1.03);
+}
+
+/* Detalle abajo de la imagen ("los mejores groomers") */
+.about-image-caption {
+    padding: 20px;
+    background: linear-gradient(135deg, #070707 0%, #0f0f0f 100%);
+    border-left: 2px solid var(--gold, #e0bc52);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.caption-badge {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gold, #e0bc52);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.about-image-caption p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #b3b3b3;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* --- Columna Derecha: Textos e Indicadores --- */
+.about-subtitle {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gold, #e0bc52);
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.about-lead-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: var(--gold, #e0bc52);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.about-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #cccccc;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* Grid de las "Cositas Chulas" (Métricas) */
+.about-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+}
+
+.metric-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold, #e0bc52);
+    font-weight: 400;
+}
+
+.metric-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #888888;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 992px) {
+    .about-editorial-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .about-featured-img {
+        height: 350px;
+    }
+    
+    .about-title {
+        font-size: 36px;
+    }
+
+    .about-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+        /* ==========================================
+   MINI SECTION: ELITE COMPANION FEATURE
+   ========================================== */
+.elite-feature {
+    padding: 60px 0; /* Padding reducido para que sea "mini" */
+    background: var(--bg-absolute-black, #000000);
+}
+
+.feature-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(5, 5, 5, 1) 100%);
+    border: 1px solid rgba(224, 188, 82, 0.15); /* Borde dorado sutil */
+    border-radius: 24px;
+    padding: 40px 60px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    gap: 40px;
+}
+
+.feature-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.feature-tagline {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gold-champagne, #E0BC52);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-text h3 {
+    font-family: 'Playfair Display', serif; /* Toque serif para máxima elegancia */
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    color: var(--pure-white, #FFFFFF);
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+}
+
+.feature-image-container {
+    flex-shrink: 0;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Círculo dorado decorativo detrás del perro */
+.feature-image-container::before {
+    content: '';
+    position: absolute;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(145, 98, 40, 0.2) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.dog-png {
+    max-width: 130%; /* Ligeramente más grande para efecto de desborde */
+    height: auto;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)); /* Sombra para dar profundidad */
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 968px) {
+    .feature-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+    
+    .feature-text h3 {
+        font-size: 2.2rem;
+    }
+
+    .feature-image-container {
+        width: 200px;
+        height: 200px;
+        margin-top: 20px;
+    }
+    
+    .feature-image-container::before {
+        width: 180px; height: 180px;
+    }
+    
+    .dog-png {
+        max-width: 120%;
+    }
+}
+
+        /* ============================================================
+           SERVICES GRID
+        ============================================================ */
+        .services {
+            padding: 120px 0;
+            background: radial-gradient(circle at 20% 50%, #0d0903 0%, var(--bg-black) 65%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: linear-gradient(180deg, rgba(15,15,15,0.7) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 0;
+            padding: 38px 32px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--bronze), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(224,188,82,0.22);
+            box-shadow: var(--luxury-shadow);
+        }
+        .service-card.featured {
+            border: 1px solid rgba(224,188,82,0.35);
+            background: linear-gradient(180deg, rgba(20,16,10,0.7) 0%, rgba(0,0,0,0.96) 100%);
+        }
+        .service-card.featured::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px; right: -36px;
+            background: var(--wine);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 900;
+            padding: 6px 42px;
+            transform: rotate(45deg);
+            letter-spacing: 0.12em;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .service-icon {
+            font-size: 2rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 22px;
+        }
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 13px;
+            color: var(--white);
+        }
+        .service-card > p {
+            color: var(--silver);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-bottom: 28px;
+            opacity: 0.72;
+        }
+        .service-action {
+            margin-top: auto;
+            text-decoration: none;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.25s ease, color 0.25s ease;
+        }
+        .service-card:hover .service-action { gap: 14px; }
+
+
+        /* ==========================================
+   THE TRANSFORMATION (BEFORE & AFTER GALLERY)
+   ========================================== */
+.transformation {
+    padding: 120px 0;
+    background: radial-gradient(circle at 50% 0%, #110d08 0%, var(--bg-absolute-black, #000000) 70%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    margin-top: 50px;
+}
+
+.ba-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--luxury-shadow, 0 20px 40px rgba(0,0,0,0.7));
+    position: relative;
+    cursor: pointer;
+    background: #050505;
+}
+
+.ba-images {
+    position: relative;
+    height: 380px;
+    width: 100%;
+}
+
+.ba-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.2);
+    background-size: cover;
+    background-position: center;
+}
+
+.img-before {
+    background-color: #1a1a1a; /* Fondo provisional si falla la imagen */
+    z-index: 1;
+    filter: grayscale(30%) contrast(0.9);
+}
+
+.img-after {
+    background-color: #2a2218; /* Fondo provisional si falla la imagen */
+    z-index: 2;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Efecto Reveal expandiendo el círculo al pasar el cursor */
+.ba-card:hover .img-after {
+    clip-path: circle(150% at 50% 50%);
+}
+
+.ba-badge {
+    position: absolute;
+    bottom: 20px;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    z-index: 3;
+}
+
+.badge-before {
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--silver-gray, #D6D7DB);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge-after {
+    right: 20px;
+    background: var(--gold-gradient, linear-gradient(135deg, #916228, #E0BC52));
+    color: var(--bg-absolute-black, #000000);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(224, 188, 82, 0.3);
+}
+
+.ba-card:hover .badge-after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ba-info {
+    padding: 25px;
+    background: linear-gradient(180deg, rgba(15, 15, 15, 0.9) 0%, #050505 100%);
+    text-align: center;
+    border-top: 1px solid rgba(224, 188, 82, 0.1);
+}
+
+.ba-info h4 {
+    color: var(--pure-white, #FFFFFF);
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.ba-instruction {
+    color: var(--gold-champagne, #E0BC52);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+}
+
+/* --- RESPONSIVIDAD DE LA GALERÍA --- */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+        /* ============================================================
+           REASSURANCE STRIP
+        ============================================================ */
+        .reassurance {
+            background: linear-gradient(135deg, var(--wine) 0%, #2a0003 100%);
+            padding: 60px 0;
+            border-top: 1px solid rgba(224,188,82,0.18);
+            border-bottom: 1px solid rgba(224,188,82,0.18);
+        }
+        .reassurance-wrapper {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .reassurance-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 340px;
+        }
+        .reassurance-item i {
+            font-size: 2.4rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .reassurance-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+        .reassurance-item p {
+            font-size: 0.85rem;
+            color: var(--silver);
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        /* ============================================================
+           VAN DETAILS
+        ============================================================ */
+        .van-details {
+            padding: 120px 0;
+            background: #040404;
+        }
+        .van-details-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .van-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .van-feature-card {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 0;
+            padding: 24px 22px;
+            display: flex;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+        .van-feature-card:hover {
+            background: rgba(145,98,40,0.04);
+            border-color: rgba(145,98,40,0.22);
+            transform: translateX(5px);
+        }
+        .van-feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(145,98,40,0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .van-feature-text h4 {
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .van-feature-text p {
+            font-size: 0.88rem;
+            color: var(--silver);
+            margin-bottom: 0;
+            opacity: 0.72;
+            transition: all 0.5s ease;
+        }
+
+
+        /* ============================================================
+           VAN VIDEO STYLES
+        ============================================================ */
+        .van-video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            overflow: hidden;
+            background-color: #050505;
+            border: 1px solid rgba(224, 188, 82, 0.2); /* Sutil marco dorado */
+        }
+
+        .van-video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Llena el contenedor sin deformarse */
+            filter: grayscale(10%) contrast(1.05); /* Ajuste cinemático de color */
+        }
+
+        /* Capa oscura superpuesta para integrar el video con el diseño Dark Luxury */
+        .van-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @media (max-width: 968px) {
+            .van-video-wrapper {
+                height: 380px;
+            }
+        }
+        
+        /* ==========================================
+   SECCIÓN: WHY CHOOSE US (LUXURY EDITION)
+   ========================================== */
+.why-choose-us {
+    padding: 120px 0;
+    background: radial-gradient(circle at 50% 50%, #0c0905 0%, var(--bg-black) 75%);
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(224, 188, 82, 0.05);
+}
+
+.why-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.why-header h2 {
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.why-header h2 span {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.why-header p {
+    color: var(--silver);
+    font-size: 1.05rem;
+    max-width: 620px;
+    margin: 0 auto;
+    opacity: 0.75;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.why-card {
+    background: linear-gradient(180deg, rgba(15,15,15,0.7) 0%, rgba(5,5,5,0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 45px 32px;
+    text-align: center;
+    border-radius: 0; /* Bordes rectos consistentes con la identidad de Oxum */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--gold-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.why-card:hover::before {
+    transform: scaleX(1);
+}
+
+.why-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(224, 188, 82, 0.22);
+    box-shadow: var(--luxury-shadow);
+}
+
+.why-icon-box {
+    width: 64px;
+    height: 64px;
+    background: rgba(145, 98, 40, 0.12);
+    border: 1px solid rgba(224, 188, 82, 0.25);
+    border-radius: 0; /* Estilo geométrico rígido de alta gama */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+.why-card:hover .why-icon-box {
+    background: var(--gold-gradient);
+    color: var(--bg-black);
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.why-card h3 {
+    font-size: 1.25rem;
+    color: var(--white);
+    margin-bottom: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.why-card p {
+    font-size: 0.9rem;
+    color: var(--silver);
+    line-height: 1.65;
+    opacity: 0.72;
+}
+
+/* Detalle sutil de huella premium oculta en el fondo */
+.why-card::after {
+    content: '\f1b0';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    font-size: 5.5rem;
+    color: rgba(224, 188, 82, 0.01);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.why-card:hover::after {
+    color: rgba(224, 188, 82, 0.02);
+    transform: rotate(-10deg) scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .why-choose-us { padding: 80px 0; }
+}
+
+
+
+/* ==========================================
+   SECCIÓN: EXCLUSIVE TERRITORIES (SEDES)
+   ========================================== */
+.territories-section {
+    padding: 120px 0;
+    background: var(--bg-black, #000000);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.territories-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.territories-header h2 {
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    color: var(--white, #ffffff);
+    margin-bottom: 20px;
+}
+
+.territories-header h2 span {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.territories-header p {
+    color: var(--silver, #a0a0a0);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.75;
+}
+
+.territories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.territory-card {
+    position: relative;
+    height: 520px;
+    background: #050505; /* Fondo oscuro base para el efecto de opacidad */
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 50px;
+    overflow: hidden;
+    border-radius: 0; /* Bordes rectos de Oxum */
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Capa de la imagen con opacidad controlada */
+.territory-card .bg-zoom {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    
+    /* === AQUÍ CONTROLAS LA OPACIDAD DE LA IMAGEN === */
+    /* 0.1 es muy oscura / 1.0 es brillo total. 0.35 es el punto perfecto */
+    opacity: 0.35; 
+    
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s ease;
+}
+
+/* Capa extra de degradado inferior para asegurar lectura del texto */
+.territory-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(5,5,5,0.9) 90%);
+    z-index: 1;
+}
+
+/* Marco dorado interior elegante en Hover */
+.territory-card::after {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px; right: 20px; bottom: 20px;
+    border: 1px solid rgba(224, 188, 82, 0.3);
+    opacity: 0;
+    transform: scale(1.02);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.territory-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(224, 188, 82, 0.2);
+    box-shadow: var(--luxury-shadow);
+}
+
+.territory-card:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Al pasar el cursor, la foto hace un zoom suave y se aclara un poquitito */
+.territory-card:hover .bg-zoom {
+    transform: scale(1.06);
+    opacity: 0.45; 
+}
+
+.territory-content {
+    position: relative;
+    z-index: 2;
+}
+
+.territory-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold, #E0BC52);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.territory-content h3 {
+    font-size: 2.4rem;
+    color: var(--white, #ffffff);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.territory-content p {
+    color: var(--silver, #a0a0a0);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    max-width: 420px;
+    margin-bottom: 30px;
+}
+
+.territory-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--white, #ffffff);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+
+.territory-card:hover .territory-status {
+    background: var(--gold-gradient);
+    color: var(--bg-black, #000000);
+    border-color: transparent;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .territory-card {
+        height: 460px;
+        padding: 40px 30px;
+    }
+}
+
+
+/* ==========================================
+   SECCIÓN: CALL TO ACTION (LUXURY CTA)
+   ========================================== */
+.luxury-cta {
+    padding: 140px 0;
+    background: linear-gradient(180deg, var(--bg-black) 0%, #0a0805 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-top: 1px solid rgba(224, 188, 82, 0.08);
+}
+
+/* Destello dorado de fondo para centrar la atención */
+.luxury-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(224, 188, 82, 0.06) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cta-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.cta-wrapper .hero-tagline {
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.luxury-cta h2 {
+    font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.luxury-cta h2 span {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.luxury-cta p {
+    color: var(--silver);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 45px;
+    opacity: 0.8;
+}
+
+/* Botón de acción premium */
+.btn-cta-luxury {
+    display: inline-block;
+    background: var(--gold-gradient);
+    color: var(--bg-black) !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 20px 45px;
+    border-radius: 0; /* Totalmente recto e impecable */
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(224, 188, 82, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de reflejo/brillo al pasar el cursor */
+.btn-cta-luxury::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: none;
+}
+
+.btn-cta-luxury:hover::after {
+    left: 150%;
+    transition: all 0.8s ease-in-out;
+}
+
+.btn-cta-luxury:hover {
+    background: transparent;
+    color: var(--gold) !important;
+    border-color: rgba(224, 188, 82, 0.6);
+    box-shadow: 0 15px 40px rgba(224, 188, 82, 0.25);
+    transform: translateY(-3px);
+}
+
+/* Elementos decorativos sutiles en las esquinas */
+.cta-wrapper::before,
+.cta-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Esquina superior izquierda */
+.cta-wrapper::before {
+    top: -10px; left: -10px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+}
+
+/* Esquina inferior derecha */
+.cta-wrapper::after {
+    bottom: -10px; right: -10px;
+    border-bottom: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+}
+
+@media (max-width: 768px) {
+    .luxury-cta { padding: 90px 0; }
+    .btn-cta-luxury { width: 100%; padding: 18px 20px; }
+    .cta-wrapper::before, .cta-wrapper::after { display: none; }
+}
+
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            background: var(--bg-black);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(2, 1fr);
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        .footer-brand p {
+            color: var(--silver);
+            margin-top: 18px;
+            max-width: 300px;
+            font-size: 0.88rem;
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+        .footer-links h4 {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: var(--silver);
+            font-size: 0.88rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--gold); opacity: 1; }
+        .footer-info p {
+            color: var(--silver);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.7;
+        }
+        .footer-info i { color: var(--gold); opacity: 1; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-bottom p {
+            color: rgba(214,215,219,0.35);
+            font-size: 0.78rem;
+        }
+
+        /* ============================================================
+           WHATSAPP FLOAT
+        ============================================================ */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 62px;
+            height: 62px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.7rem;
+            text-decoration: none;
+            box-shadow: 0 8px 28px rgba(37,211,102,0.38);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.12) rotate(-5deg);
+            box-shadow: 0 14px 36px rgba(37,211,102,0.55);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1060px) {
+            .hero-title { font-size: 3.6rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 860px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 0; left: -100%;
+                width: 100%; height: 100vh;
+                background: rgba(0,0,0,0.98);
+                flex-direction: column;
+                justify-content: center;
+                padding: 50px 0;
+                gap: 28px;
+                transition: left 0.4s ease;
+                border-right: 1px solid rgba(145,98,40,0.2);
+            }
+            .nav-menu.active { left: 0; }
+            .hero-grid, .concept-grid, .van-details-grid, .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .hero-title { font-size: 3rem; }
+            .hero { text-align: center; padding-top: 140px; }
+            .hero-tagline, .hero-description { margin-left: auto; margin-right: auto; }
+            .hero-tagline { justify-content: center; }
+            .hero-actions { justify-content: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .concept-perks { grid-template-columns: 1fr; }
+            .reassurance-wrapper { flex-direction: column; align-items: flex-start; padding: 0 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            /* City switcher — inline inside mobile menu */
+            .city-dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                border-top: 1px solid rgba(224,188,82,0.1);
+                border-bottom: 1px solid rgba(224,188,82,0.1);
+                display: none;
+                min-width: unset;
+            }
+            .city-switcher.open .city-dropdown { display: block; }
+            .city-switcher-toggle { background: transparent; border: none; padding: 0; }
+            .city-switcher-toggle:hover,
+            .city-switcher.open .city-switcher-toggle { background: transparent; border: none; }
+            .city-option { padding: 12px 0; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================================================
+         HEADER / NAV
+    ================================================================ -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="brand-logo-link">
+                <!-- LOGO: replace src with your actual file path -->
+                <img src="assets/images/Logo Oxum _1.png" alt="Oxum Pet Service" class="nav-logo-img">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#concept" class="nav-link">The Concept</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#van-details" class="nav-link">The Spa Van</a></li>
+                <li class="city-switcher" id="citySwitcher">
+                    <button class="city-switcher-toggle" aria-expanded="false" aria-haspopup="true" onclick="toggleCitySwitcher()">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        <span>Asheville</span>
+                        <i class="fa-solid fa-chevron-down city-chevron"></i>
+                    </button>
+                    <ul class="city-dropdown" role="menu">
+                        <li role="none">
+                            <a href="index.html" class="city-option" role="menuitem">
+                                <i class="fa-solid fa-map-pin"></i>
+                                <span>Miami & Broward</span>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="asheville.html" class="city-option city-active" role="menuitem">
+                                <i class="fa-solid fa-mountain-sun"></i>
+                                <span>Asheville</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-cta wa-link dynamic-cta" target="_blank" rel="noopener">Book Now</a></li>
+            </ul>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- ================================================================
+         HERO
+    ================================================================ -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-tagline" id="heroTagline">Elite Mobile Pet Styling</div>
+<h1 data-asheville="Elite Mobile Pet Spa in Asheville Sanctuary">
+    Elite Mobile Pet Spa in Asheville
+</h1>
+                <p class="hero-description" id="heroDescription">
+                    The ultimate mobile spa experience brought directly to your doorstep in Asheville. Seamlessly blending cutting-edge pet wellness with world-class aesthetic tailoring.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-luxury-main wa-link" target="_blank" rel="noopener">
+                        Schedule Appointment <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <a href="#services" class="btn-luxury-secondary">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+    <img src="assets/images/miami/hero.png" id="parallaxVan" alt="Oxum Elite Mobile Spa Van" class="hero-van-img">
+</div>
+
+
+        </div>
+        <div class="hero-divider">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,42.4V0Z" class="shape-accent"></path>
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120C121.81,118.7,221.35,75,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    </section>
+
+
+   <section class="about-section reveal" id="about-us">
+    <div class="container">
+        <div class="about-editorial-grid">
+            
+            <div class="about-media-column">
+                <div class="about-image-wrapper">
+                    <img src="assets/images/asheville/about.jpg" alt="Elite Grooming Session" class="about-featured-img">
+                </div>
+                <div class="about-image-caption">
+                    <span class="caption-badge">Elite Staff</span>
+                    <p>Handpicked certified master groomers committed to master-level canine aesthetics in Asheville.</p>
+                </div>
+            </div>
+
+            <div class="about-content-column">
+                <span class="about-subtitle">About Oxum Pet Service</span>
+                <h2 class="about-title">Uncompromising Luxury &amp; Absolute Comfort</h2>
+                
+                <div class="about-text-wrapper">
+                    <p class="about-lead-text">Redefining mobile pet grooming in Asheville.</p>
+                    <p class="about-description">
+                        Born from a vision to eliminate the stress of traditional salons, Oxum transforms canine care into an elite wellness sanctuary. We bring a fully self-powered, climate-controlled mobile spa directly to your home in Asheville, crafting a tailored, 1-on-1 experience for the most demanding companions.
+                    </p>
+                    <p class="about-description">
+                        Every session is treated as a masterpiece. No cages, no noise pollution, and zero rush—just uninterrupted devotion from Asheville's finest specialists.
+                    </p>
+                </div>
+
+                <div class="about-metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-number">4+</span>
+                        <span class="metric-label">Years of Elite Experience</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">100%</span>
+                        <span class="metric-label">Stress-Free &amp; Cage-Free</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">Top Tier</span>
+                        <span class="metric-label">Organic Cosmetics Only</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <section class="elite-feature">
+    <div class="container">
+        <div class="feature-container reveal">
+            <div class="feature-text">
+                <span class="feature-tagline">Devotion in every detail</span>
+                <h3>Uncompromising Luxury for Your Loyal Companion.</h3>
+            </div>
+            <div class="feature-image-container">
+                <img src="assets/images/miami/3.png" alt="Elite styled dog" class="dog-png">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ================================================================
+         SERVICES
+    ================================================================ -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Custom <span>Styling Menu</span></h2>
+                <p>Select from our core treatment options. Every session is carefully configured to maintain pristine physical wellness.</p>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-soap"></i></div>
+                    <h3>Full Bath</h3>
+                    <p>A deep-cleaning bath with premium shampoos, leaving your pet fresh and revitalized.</p>
+                    <a href="#" class="service-action wa-link" target="_blank" rel="noopener">
+                        Book Treatment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="service-card featured reveal">
+                    <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+                    <h3>Full Grooming</h3>
+                    <p>Includes a bath, haircut, and styling tailored to your pet's breed and aesthetic preferences.</p>
+                    <a href="#" class="service-action wa-link" target="_blank" rel="noopener">
+                        Book Treatment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-paw"></i></div>
+                    <h3>Nail Clipping</h3>
+                    <p>Safely trims nails to a comfortable length, preventing discomfort and damage to floors and furniture.</p>
+                    <a href="#" class="service-action wa-link" target="_blank" rel="noopener">
+                        Book Treatment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+                    <h3>Deep Teeth Cleaning</h3>
+                    <p>Thorough oral care to promote fresh breath and long-term dental health for your companion.</p>
+                    <a href="#" class="service-action wa-link" target="_blank" rel="noopener">
+                        Book Treatment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-ear-listen"></i></div>
+                    <h3>Ear Cleaning</h3>
+                    <p>Gentle cleaning to remove wax buildup and actively prevent infections.</p>
+                    <a href="#" class="service-action wa-link" target="_blank" rel="noopener">
+                        Book Treatment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <h3>Paw &amp; Footprint Care</h3>
+                    <p>Moisturizing and trimming to keep paws healthy, hydrated, and free from cracks.</p>
+                    <a href="#" class="service-action wa-link" target="_blank" rel="noopener">
+                        Book Treatment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="transformation" id="gallery">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>The <span>Transformation</span></h2>
+            <p>Witness the meticulous attention to detail. Hover over each portrait to reveal the final masterpiece of our elite styling process.</p>
+        </div>
+        <div class="gallery-grid">
+            
+            <div class="ba-card reveal">
+                <div class="ba-images">
+                    <div class="ba-image img-before" style="background-image: url('assets/images/asheville/before-1.png');">
+                        <div class="ba-badge badge-before">Before</div>
+                    </div>
+                    <div class="ba-image img-after" style="background-image: url('assets/images/asheville/after-1.png');">
+                        
+                        <div class="ba-badge badge-after">After <i class="fa-solid fa-sparkles"></i></div>
+                    </div>
+                </div>
+                <div class="ba-info">
+                    <h4></h4>
+                    <div class="ba-instruction">Hover to reveal</div>
+                </div>
+            </div>
+
+            <div class="ba-card reveal" style="transition-delay: 0.1s;">
+                <div class="ba-images">
+                    <div class="ba-image img-before" style="background-image: url('assets/images/asheville/before-2.png');">
+                        
+                        <div class="ba-badge badge-before">Before</div>
+                    </div>
+                    <div class="ba-image img-after" style="background-image: url('assets/images/asheville/after-2.png');">
+                        
+                        <div class="ba-badge badge-after">After <i class="fa-solid fa-sparkles"></i></div>
+                    </div>
+                </div>
+                <div class="ba-info">
+                    <h4></h4>
+                    <div class="ba-instruction">Hover to reveal</div>
+                </div>
+            </div>
+
+            <div class="ba-card reveal" style="transition-delay: 0.2s;">
+                <div class="ba-images">
+                    <div class="ba-image img-before" style="background-image: url('assets/images/asheville/before-3.jpg');">
+                        
+                        <div class="ba-badge badge-before">Before</div>
+                    </div>
+                    <div class="ba-image img-after" style="background-image: url('assets/images/asheville/after-3.jpg');">
+                       
+                        <div class="ba-badge badge-after">After <i class="fa-solid fa-sparkles"></i></div>
+                    </div>
+                </div>
+                <div class="ba-info">
+                    <h4></h4>
+                    <div class="ba-instruction">Hover to reveal</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- ================================================================
+         REASSURANCE STRIP
+    ================================================================ -->
+    <section class="reassurance">
+        <div class="container reassurance-wrapper">
+            <div class="reassurance-item">
+                <i class="fa-solid fa-shield-dog"></i>
+                <div>
+                    <h4>Breed-Certified Staff</h4>
+                    <p>Specialized protocols for each breed's unique temperament and coat type.</p>
+                </div>
+            </div>
+            <div class="reassurance-item">
+                <i class="fa-solid fa-van-shuttle"></i>
+                <div>
+                    <h4>Fully Autonomous Unit</h4>
+                    <p>Our vehicles carry independent power and fresh filtered water onboard.</p>
+                </div>
+            </div>
+            <div class="reassurance-item">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <div>
+                    <h4>Hospital-Grade Sanitation</h4>
+                    <p>Full sterilization procedures performed thoroughly after every deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="van-details" id="van-details">
+        <div class="container van-details-grid">
+            
+            <div class="concept-frame reveal">
+                <div class="van-video-wrapper">
+                    <img src="assets/images/asheville/van.JPG" alt="Interior Spa Van" class="van-video-element">
+                    <div class="van-video-overlay"></div>
+                </div>
+            </div>
+
+            <div class="van-features-list reveal">
+                <div class="hero-tagline" style="margin-bottom:0;">Inside the Unit</div>
+                <h2 style="font-size:2.4rem;margin-bottom:10px;">The Mobile Wellness Sanctuary</h2>
+                <p style="color:var(--silver);margin-bottom:20px;font-size:0.95rem;opacity:0.75;line-height:1.75;">
+                    Engineered to deliver exceptional environmental mastery. Your pet experiences pure tranquility inside a temperature-controlled premium space.
+                </p>
+
+                <div class="van-feature-card">
+                    <div class="van-feature-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <div class="van-feature-text">
+                        <h4>Climate Master System</h4>
+                        <p id="vanClimateText">Fully regulated interior heating and cooling ensures perfect thermal comfort regardless of outside conditions.</p>
+                    </div>
+                </div>
+
+                <div class="van-feature-card">
+                    <div class="van-feature-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+                    <div class="van-feature-text">
+                        <h4>Pure Filtered Water Matrix</h4>
+                        <p>Onboard heated fresh water filtration guarantees your companion receives absolutely clean, premium rinses every time.</p>
+                    </div>
+                </div>
+
+                <div class="van-feature-card">
+                    <div class="van-feature-icon"><i class="fa-solid fa-volume-xmark"></i></div>
+                    <div class="van-feature-text">
+                        <h4>Ultra-Quiet Power Setup</h4>
+                        <p>Acoustically soundproofed power solutions protect sensitive pets from abrupt or alarming mechanical sounds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us" id="why-us">
+    <div class="container">
+        
+        <div class="why-header reveal">
+            <h2>Why Choose <span class="serif-italic">Oxum?</span></h2>
+            <p>We don't just wash pets; we deliver an elite mobile spa experience tailored exclusively for your companion, right at your doorstep.</p>
+        </div>
+
+        <div class="why-grid">
+            
+            <div class="why-card reveal">
+                <div class="why-icon-box">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>100% Stress-Free</h3>
+                <p>No terrifying cages, no chaotic salon noise, and zero separation anxiety. Just absolute, personalized one-on-one devotion inside our serene mobile oasis.</p>
+            </div>
+
+            <div class="why-card reveal" style="transition-delay: 0.1s;">
+                <div class="why-icon-box">
+                    <i class="fas fa-van-shuttle"></i>
+                </div>
+                <h3>Elite Mobile Spa</h3>
+                <p>Meticulously equipped with heated warm water, specialized climate control, and ultra-quiet systems to ensure perfect comfort for your friend.</p>
+            </div>
+
+            <div class="why-card reveal" style="transition-delay: 0.2s;">
+                <div class="why-icon-box">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Certified Stylists</h3>
+                <p>Our professional groomers blend advanced technical precision with fluent love, offering premium treatments and infinite gentle praise.</p>
+            </div>
+
+            <div class="why-card reveal" style="transition-delay: 0.3s;">
+                <div class="why-icon-box">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Unmatched Comfort</h3>
+                <p>Bypass heavy city traffic and busy drop-off coordinates. Enjoy the complete tranquility of our premium service operating on your schedule.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="territories-section" id="sedes">
+    <div class="container">
+        
+        <div class="territories-header reveal">
+            <h2>Exclusive <span>Territories</span></h2>
+            <p data-miami="Delivering uncompromising canine aesthetics and premium treatments straight to your villa or estate in Florida."
+   data-asheville="Bringing meticulous aesthetic attention and luxury wellness tailored for your active mountain companion in North Carolina.">
+   Delivering uncompromising canine aesthetics straight to your coordinate.
+</p>
+        </div>
+
+        <div class="territories-grid">
+            
+            <div class="territory-card reveal">
+                <div class="bg-zoom" style="background-image: url('assets/images/miami/IMG_7599.jpg');"></div>
+                
+                <div class="territory-content">
+                    <span class="territory-tag">Sede Florida</span>
+                    <h3>Miami & <br><span class="serif-italic">Broward County</span></h3>
+                    <p>Serving the coastal elite. From vibrant city avenues to private coastal estates, our specialized units deliver pristine grooming with tropical precision.</p>
+                    <a href="index.html" class="territory-status">
+                        <i class="fa-solid fa-location-dot"></i> Active Coverage
+                    </a>
+                </div>
+            </div>
+
+            <div class="territory-card reveal" style="transition-delay: 0.1s;">
+                <div class="bg-zoom" style="background-image: url('assets/images/asheville/IMG_9122.JPG');"></div>
+                
+                <div class="territory-content">
+                    <span class="territory-tag">Sede North Carolina</span>
+                    <h3>Asheville <br><span class="serif-italic">Region</span></h3>
+                    <p>Bringing high-end wellness to the Blue Ridge sanctuary. Meticulous aesthetic attention tailored perfectly for active, mountain-loving companions.</p>
+                    <a href="asheville.html" class="territory-status">
+                        <i class="fa-solid fa-location-dot"></i> Active Coverage
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="luxury-cta">
+    <div class="container">
+        <div class="cta-wrapper reveal">
+            <div class="hero-tagline">Indulge Their Senses</div>
+            
+            <h2>Ready to Give Your Companion the <br><span class="serif-italic">Ultimate Luxury Experience?</span></h2>
+            
+            <p>Spaces for our elite mobile spa sessions in Asheville are strictly limited to ensure uncompromised devotion and care. Secure your appointment today and redefine wellness for your best friend.</p>
+            
+            <a href="https://wa.me/7865607941" class="btn-cta-luxury dynamic-cta" target="_blank" rel="noopener">
+                Book an Elite Session
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- ================================================================
+         FOOTER
+    ================================================================ -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <!-- LOGO: replace src with your actual file path -->
+                <img src="assets/images/Logo Oxum _1.png" alt="Oxum Pet Service" class="nav-logo-img" style="max-height:60px;">
+                <p>The benchmark in luxury mobile pet grooming. Serving elite clients across Asheville with unyielding devotion.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#">Back to Top</a></li>
+                    <li><a href="#concept">The Concept</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#van-details">The Spa Van</a></li>
+                </ul>
+            </div>
+            <div class="footer-info footer-links">
+                <h4>Concierge</h4>
+                <p><i class="fa-solid fa-clock"></i> Mon — Sat: 9:00 AM – 6:00 PM</p>
+                <p id="footerLocationText"><i class="fa-solid fa-map-location-dot"></i> Dynamic Location Active</p>
+                <p><i class="fa-solid fa-envelope"></i> oxumpetservices@gmail.com</p>
+                <p><a href="tel:+13054900892"><i class="fa-solid fa-phone"></i> +1 (786) 560-7941</a></p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Oxum Pet Service. All Rights Reserved.</p>
+            <p>Serving Asheville, NC</p>
+        </div>
+    </footer>
+
+
+    <!-- WhatsApp float -->
+    <a href="#" class="floating-whatsapp wa-link" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <!-- ================================================================
+         JAVASCRIPT
+    ================================================================ -->
+    <script>
+        const locationCopy = {
+            Asheville: {
+                tagline: "Asheville Fleet | Blue Ridge Mountain Sanctuary",
+                heroDesc: "The ultimate mobile spa experience customized for the active lifestyle of Western North Carolina. Restoring pristine aesthetic beauty and deep relaxation to your companion directly at your mountain home.",
+                conceptIntro: "We redefine mountain pet care in Asheville by replacing stressful facility commutes with a comforting, ultra-private wellness retreat right outside your home.",
+                conceptBody: "Our Asheville treatments are curated for pets that enjoy the great outdoors. We specialize in deep coat purification to remove trail debris, intensive paw hydration to prevent mountain-terrain cracking, and warm thermal rinses.",
+                vanClimate: "Heavy-duty dual heating systems keep the interior perfectly warm during crisp Appalachian mornings and shifting mountain seasons."
+            }
+        };
+
+        const phoneNumbers = {
+            Asheville: "7865607941"
+        };
+
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        }
+
+        function setWhatsAppLinks(phone) {
+            const message = encodeURIComponent('Hello Oxum Concierge, I would like to book a luxury mobile grooming session for my pet in Asheville.');
+            const waUrl = `https://wa.me/1${phone}?text=${message}`;
+
+            document.querySelectorAll('.wa-link').forEach((link) => {
+                link.href = waUrl;
+            });
+        }
+
+        function applyLocation(regionName) {
+            const copy = locationCopy[regionName];
+            const phone = phoneNumbers[regionName];
+            if (!copy || !phone) return;
+
+            const currentLoc = document.querySelector('.city-switcher-toggle span');
+            if (currentLoc) currentLoc.textContent = regionName;
+
+            const footerLocationText = document.getElementById('footerLocationText');
+            if (footerLocationText) {
+                footerLocationText.innerHTML = `<i class="fa-solid fa-map-location-dot"></i> Luxury Fleet: ${regionName}`;
+            }
+
+            const heroTagline = document.getElementById('heroTagline');
+            if (heroTagline) heroTagline.textContent = copy.tagline;
+
+            const heroDescription = document.getElementById('heroDescription');
+            if (heroDescription) heroDescription.textContent = copy.heroDesc;
+
+            const conceptIntro = document.getElementById('conceptIntro');
+            if (conceptIntro) conceptIntro.textContent = copy.conceptIntro;
+
+            const conceptBody = document.getElementById('conceptBody');
+            if (conceptBody) conceptBody.textContent = copy.conceptBody;
+
+            const vanClimateText = document.getElementById('vanClimateText');
+            if (vanClimateText) vanClimateText.textContent = copy.vanClimate;
+
+            document.querySelectorAll('[data-asheville]').forEach((element) => {
+                const text = element.getAttribute('data-asheville');
+                if (text) element.textContent = text;
+            });
+
+            setWhatsAppLinks(phone);
+        }
+
+        function toggleCitySwitcher() {
+            const switcher = document.getElementById('citySwitcher');
+            if (!switcher) return;
+            const isOpen = switcher.classList.toggle('open');
+            const toggle = switcher.querySelector('.city-switcher-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        document.addEventListener('click', function(e) {
+            const switcher = document.getElementById('citySwitcher');
+            if (switcher && !switcher.contains(e.target)) {
+                switcher.classList.remove('open');
+                const toggle = switcher.querySelector('.city-switcher-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            const icon = document.getElementById('menuIcon');
+            const isOpen = menu.classList.toggle('active');
+            if (icon) {
+                icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (header) {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            }
+
+            const van = document.getElementById('parallaxVan');
+            if (van) {
+                van.style.transform = `translateX(-${window.scrollY * 0.25}px)`;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollReveal();
+
+            document.querySelectorAll('.nav-link').forEach((link) => {
+                link.addEventListener('click', () => {
+                    const menu = document.getElementById('navMenu');
+                    const icon = document.getElementById('menuIcon');
+                    if (menu) menu.classList.remove('active');
+                    if (icon) icon.className = 'fa-solid fa-bars';
+                });
+            });
+
+            applyLocation('Asheville');
+        });
+    </script>
+
+</body>
+</html>
