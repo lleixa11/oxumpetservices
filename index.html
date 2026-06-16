@@ -1710,6 +1710,20 @@
             .reassurance-wrapper { flex-direction: column; align-items: flex-start; padding: 0 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
             .footer-bottom { flex-direction: column; text-align: center; }
+            @media (max-width: 860px) {
+            /* (Aquí tienes tus otras reglas que ya estaban) */
+           
+            /* --- AGREGA ESTO PARA CENTRAR TODO --- */
+            .footer-info p {
+                justify-content: center; /* Centra los textos que tienen el icono al ladito */
+            }
+            .footer-info div {
+                justify-content: center; /* Centra los botones grandotes de Facebook e Instagram */
+            }
+            .footer-brand img {
+                margin: 0 auto; /* Obliga al logo a quedarse justo en el centro */
+            }
+        }
            
         }
     </style>
